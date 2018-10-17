@@ -23,20 +23,8 @@ public class NDFADriver {
         ndfa.addTransitions(path3);
         ndfa.addTransitions(path4);
 
-        ArrayList<String> possibleCurrentStates = new ArrayList<>();
+        int[] inputs = {1,0,1,1,0,1};
 
-        // Start state = start
-        possibleCurrentStates.add("start");
-
-        System.out.println("Start state = " + possibleCurrentStates.get(0));
-
-        while (true) {
-            int input = scan.nextInt();
-
-            System.out.print("Input = " + input + "; ");
-
-            // Pass in list of possible current states, and the input character
-            possibleCurrentStates = ndfa.showPossibleTransitions(possibleCurrentStates, input);
-        }
+        ndfa.showPossibleTransitions2("start", inputs);
     }
 }

@@ -66,5 +66,49 @@ public class NDFA {
         System.out.print(nextStates + "\n");
         return nextStates;
     }
+
+    public ArrayList<String> showPossibleTransitions2(String currentState, int[] inputs) {
+
+        // List of all possible current states
+        ArrayList<String> currentStates = new ArrayList<>();
+
+        currentStates.add(currentState);
+
+        // For each input character
+        for (int i = 0; i < inputs.length; i++) {
+
+            ArrayList<String> nextStates = new ArrayList<>();
+
+            // For each possible current states
+            for (int j = 0; j < currentStates.size(); j++) {
+
+                ArrayList<Path> possiblePathsFromCurrentState = transitions.get(currentStates.get(j));
+
+                // If there is a path for this state
+                if (possiblePathsFromCurrentState != null) {
+
+                    // Iterate through each possible path from a given state
+                    for (int k = 0; k < possiblePathsFromCurrentState.size(); k++) {
+
+                        // If the input matches the input character needed for path and does not already exist in the list
+                        if (possiblePathsFromCurrentState.get(k).input == inputs[i]) {
+                            // If the end state does not exist in the list nextStates, then
+                            if (!nextStates.contains(possiblePathsFromCurrentState.get(k).end)) {
+                                nextStates.add(possiblePathsFromCurrentState.get(k).end);
+                            }
+                        }
+                    }
+                }
+
+            }
+            Collections.sort(nextStates);
+            System.out.print("Input = " + inputs[i] + "; ");
+            System.out.print("new possible states: ");
+            System.out.print(nextStates + "\n");
+            currentStates = nextStates;
+        }
+
+        return currentStates;
+    }
 }
 
