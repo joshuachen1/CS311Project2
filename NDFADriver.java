@@ -1,5 +1,5 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * NDFADriver.java
@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class NDFADriver {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
 
         NDFA ndfa = new NDFA();
 
@@ -23,8 +22,16 @@ public class NDFADriver {
         ndfa.addTransitions(path3);
         ndfa.addTransitions(path4);
 
+        ArrayList<String> current = new ArrayList<>();
+        current.add("start");
+
         int[] inputs = {1,0,1,1,0,1};
 
-        ndfa.showPossibleTransitions2("start", inputs);
+        System.out.println("Start state: " + current.get(0));
+
+        current = ndfa.showPossibleTransitions2(current.get(0), inputs);
+
+        System.out.println("Stop state(s) = " + current);
+
     }
 }

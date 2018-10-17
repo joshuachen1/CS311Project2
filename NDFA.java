@@ -69,7 +69,6 @@ public class NDFA {
 
     public ArrayList<String> showPossibleTransitions2(String currentState, int[] inputs) {
 
-        // List of all possible current states
         ArrayList<String> currentStates = new ArrayList<>();
 
         currentStates.add(currentState);
@@ -99,15 +98,13 @@ public class NDFA {
                         }
                     }
                 }
-
             }
             Collections.sort(nextStates);
-            System.out.print("Input = " + inputs[i] + "; ");
+            System.out.print("\tInput = " + inputs[i] + "; ");
             System.out.print("new possible states: ");
             System.out.print(nextStates + "\n");
             currentStates = nextStates;
         }
-
         return currentStates;
     }
 }
