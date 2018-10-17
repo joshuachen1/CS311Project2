@@ -44,19 +44,19 @@ public class NDFA {
         for (int i = 0; i < state.size(); i++) {
 
             // Set of all possible paths from a given state
-            ArrayList<Path> possibleTransitions = transitions.get(state.get(i));
+            ArrayList<Path> possiblePathsFromCurrentState = transitions.get(state.get(i));
 
             // If there is a path for this state
-            if (possibleTransitions != null) {
+            if (possiblePathsFromCurrentState != null) {
 
                 // Iterate through each possible path from a given state
-                for (int j = 0; j < possibleTransitions.size(); j++) {
+                for (int j = 0; j < possiblePathsFromCurrentState.size(); j++) {
 
                     // If the input matches the input character needed for path and does not already exist in the list
-                    if (possibleTransitions.get(j).input == input) {
+                    if (possiblePathsFromCurrentState.get(j).input == input) {
                         // If the end state does not exist in the list nextStates, then
-                        if (!nextStates.contains(possibleTransitions.get(j).end)) {
-                            nextStates.add(possibleTransitions.get(j).end);
+                        if (!nextStates.contains(possiblePathsFromCurrentState.get(j).end)) {
+                            nextStates.add(possiblePathsFromCurrentState.get(j).end);
                         }
                     }
                 }
