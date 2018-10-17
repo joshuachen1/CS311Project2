@@ -23,13 +23,12 @@ public class NDFADriver {
         ndfa.addTransitions(path3);
         ndfa.addTransitions(path4);
 
-        // List of possible current states
-        ArrayList<String> possibleCurrentState = new ArrayList<>();
+        ArrayList<String> possibleCurrentStates = new ArrayList<>();
 
         // Start state = start
-        possibleCurrentState.add("start");
+        possibleCurrentStates.add("start");
 
-        System.out.println("Start state = " + possibleCurrentState.get(0));
+        System.out.println("Start state = " + possibleCurrentStates.get(0));
 
         while (true) {
             int input = scan.nextInt();
@@ -37,7 +36,7 @@ public class NDFADriver {
             System.out.print("Input = " + input + "; ");
 
             // Pass in list of possible current states, and the input character
-            possibleCurrentState = ndfa.showPossibleTransitions(possibleCurrentState, input);
+            possibleCurrentStates = ndfa.showPossibleTransitions(possibleCurrentStates, input);
         }
     }
 }

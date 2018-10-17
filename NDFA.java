@@ -35,16 +35,14 @@ public class NDFA {
         }
     }
 
-    public ArrayList<String> showPossibleTransitions(ArrayList<String> state, int input) {
+    public ArrayList<String> showPossibleTransitions(ArrayList<String> possibleCurrentStates, int input) {
 
         // List of all possible end states
         ArrayList<String> nextStates = new ArrayList<>();
 
-        // for i in possibleCurrentState:
-        for (int i = 0; i < state.size(); i++) {
+        for (int i = 0; i < possibleCurrentStates.size(); i++) {
 
-            // Set of all possible paths from a given state
-            ArrayList<Path> possiblePathsFromCurrentState = transitions.get(state.get(i));
+            ArrayList<Path> possiblePathsFromCurrentState = transitions.get(possibleCurrentStates.get(i));
 
             // If there is a path for this state
             if (possiblePathsFromCurrentState != null) {
